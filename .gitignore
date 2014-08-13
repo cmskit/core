@@ -1,0 +1,30 @@
+
+# ignore Composer if in this directory
+composer.phar
+composer.lock
+.htaccess
+.idea
+
+# ignore saved credentioals for superroot
+inc/super.php
+
+# exclude these Folders
+vendor/*
+projects/**/*
+admin/**/*
+extensions/**/*
+wizards/**/*
+templates/**/*
+
+# re-include some files/folders from previously excluded ones
+!projects/index.php
+!extensions/index.php
+!extensions/default/**/*
+!admin/_project_setup/**/*
+!wizards/index.php
+!templates/default/*
+
+# language-folders
+inc/login/locales/*.php
+
+
