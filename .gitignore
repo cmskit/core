@@ -28,3 +28,5 @@ templates/**/*
 inc/login/locales/*.php
 
 
+
+templates/ideen.md
