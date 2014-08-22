@@ -19,5 +19,5 @@ Files & folders
 * login_src.php => array of pictures 
 * x_of_the_day.php => simple php function loaded as javascript to generate the "pic of the day"
 
-Please note that the login-page needs jquery + jquery-ui located at "vendor/cmskit/lib-jquery-ui". 
+Please note that the login-page needs jquery + jquery-ui located at "vendor/cmskit/jquery-ui".
 In addition the theme "smoothness" is used/required!

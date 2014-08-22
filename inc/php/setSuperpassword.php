@@ -24,7 +24,7 @@
 *********************************************************************************/
 require __DIR__ . '/session.php';
 // collect styles
-$styles = glob('../../../vendor/cmskit/lib-jquery-ui/themes/*', GLOB_ONLYDIR);
+$styles = glob('../../../vendor/cmskit/jquery-ui/themes/*', GLOB_ONLYDIR);
 $sopt = '';
 foreach($styles as $style)
 {
@@ -54,8 +54,8 @@ foreach($templates as $template)
 	<title>set new Super-Password</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
-	<script type="text/javascript" src="../../../vendor/cmskit/lib-jquery-ui/jquery.min.js"></script>
-	<script type="text/javascript" src="../../../vendor/cmskit/lib-jquery-ui/vendor/cmskit/lib-jquery-ui/plugins/jquery.plugin_password_strength.js"></script>
+	<script type="text/javascript" src="../../../vendor/cmskit/jquery-ui/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../vendor/cmskit/jquery-ui/vendor/cmskit/jquery-ui/plugins/jquery.plugin_password_strength.js"></script>
 	<script type="text/javascript" src="../js/gpw.js"></script>
 	<style>
 		body{background:#eee; font:72.5% "Trebuchet MS", Arial, sans-serif;}

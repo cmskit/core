@@ -63,7 +63,7 @@ button span {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background-image: url("../../../../vendor/cmskit/lib-jquery-ui/themes/smoothness/images/ui-icons_222222_256x240.png");
+    background-image: url("../../../../vendor/cmskit/jquery-ui/themes/smoothness/images/ui-icons_222222_256x240.png");
 }
 
 input[type=text], input[type=password], select {

@@ -40,7 +40,7 @@ a Folder **may** contain
 				["TEMPLATE/js/cmskit.core.js", true, true, true],
 				["TEMPLATE/js/cmskit.desktop.js", true, true, false],
 				["TEMPLATE/js/jquery.autosize.min.js", true, false, false],
-				["BACKEND/../vendor/cmskit/lib-jquery-ui/jquery.foldertree.js", true, false, true]
+				["BACKEND/../vendor/cmskit/jquery-ui/jquery.foldertree.js", true, false, true]
 			],
 			"out": "TEMPLATE/js/packed_LANG.js"
 		}
