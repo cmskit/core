@@ -9,24 +9,21 @@ composer.lock
 inc/super.php
 
 # exclude these Folders
-vendor/*
-projects/**/*
 admin/**/*
 extensions/**/*
 wizards/**/*
 templates/**/*
 
-# re-include some files/folders from previously excluded ones
-!projects/index.php
+# re-include some files from previously excluded folders
+!admin/readme.md
+!admin/header.php
+!admin/index.php
+!extensions/readme.md
 !extensions/index.php
-!extensions/default/**/*
-!admin/_project_setup/**/*
+!templates/readme.md
+!wizards/readme.md
 !wizards/index.php
-!templates/default/*
 
 # language-folders
 inc/login/locales/*.php
 
-
-
-templates/ideen.md

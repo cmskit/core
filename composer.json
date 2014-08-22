@@ -1,0 +1,19 @@
+{
+    "name": "cmskit/core",
+    "type": "library",
+    "version": "0.9.0",
+    "description": "Core package for cms-kit",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Christoph Taubmann",
+            "email": "info@cms-kit.com"
+        }
+    ],
+    "homepage": "http://cms-kit.com",
+
+    "require": {
+        "php": ">=5.3.3",
+        "cmskit/package-installer": "1.0.*@dev"
+    }
+}
