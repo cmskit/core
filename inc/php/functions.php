@@ -12,8 +12,7 @@
 *
 *  The GNU General Public License can be found at
 *  http://www.gnu.org/licenses/gpl.html
-*  A copy is found in the textfile GPL.txt and important notices to other licenses
-*  can be found found in LICENSES.txt distributed with these scripts.
+
 *
 *  This script is distributed in the hope that it will be useful,
 *  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -38,8 +37,8 @@ $KITVERSION = '0.9.8';
 */
 function crpt ($pass, $salt=null )
 {
-	// create a new "random" Salt if not given
-	if(empty($salt)) $salt = substr(md5(microtime()), 0, 12);
+	// Create a new random salt if not given
+	if (empty($salt)) $salt = substr(md5(mt_rand()), 0, 12);
 	
 	if (defined('CRYPT_BLOWFISH') && CRYPT_BLOWFISH)
 	{

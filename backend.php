@@ -155,12 +155,12 @@ function verifyUser($mysession, $post, $projectPath, $projectName)
     $mysession['config'] = $mainConfig;
 
 
-    // check for Super-Root //////////////////////////////////////////////////////////////
+    // check for superroot //////////////////////////////////////////////////////////////
     if ((
             crpt(substr($post['pass'], 0, 200), $super[0]) === $super[0] . ':' . $super[1]
             &&
             (
-                in_array($_SERVER['SERVER_NAME'], array('localhost', '127.0.0.1')) // no need for Captchas on localhost
+                in_array($_SERVER['SERVER_NAME'], array('localhost', '127.0.0.1')) // no need for captchas on localhost
                 ||
                 isset($_SESSION['captcha_answer']) && $post['name'] == $_SESSION['captcha_answer']
             )

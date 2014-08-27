@@ -45,7 +45,7 @@ if (!file_exists('inc/super.php')) {
 
 // redirect to Project-Setup if no project
 if (count($projects) == 0) {
-    header('location: admin/_project_setup/index.php');
+    header('location: admin/project_setup/index.php');
 }
 
 
