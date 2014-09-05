@@ -108,7 +108,8 @@ function verifyUser($mysession, $post, $projectPath, $projectName)
 
     // define/reset the main Session-Array
     $mysession = array(
-        'secret' => sha1($_CONF::CRDATE), // create a project-specific secret to use in hashes
+        'sys_secret' => md5($_CONF::SECRET), // set a project-specific secret
+        'usr_secret' => md5($post['pass']), // set a user-specific secret
         'login' => time(),
         'special' => array(),
         'lang' => $post['lang'],
