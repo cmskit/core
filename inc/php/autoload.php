@@ -13,7 +13,7 @@ spl_autoload_register(function ($class)
 	
 	switch ($a[0])
 	{
-		case 'Michelf': // markdown extra
+		/*case 'Michelf': // markdown extra
 			include __DIR__ . '/Markdown.php';
 		break;
 		case 'PclZip': // PclZip
@@ -24,7 +24,7 @@ spl_autoload_register(function ($class)
 		break;
 		case 'PHPTAL': // phptal...
 			
-		break;
+		break;*/
 		
 		default: // assume we have to load a project class
 			if (isset($a[1]))
