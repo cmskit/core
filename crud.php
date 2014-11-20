@@ -25,9 +25,9 @@
 /**
 * main CRUD-Functions
 * this File calls 
-* * the base Crud-Class in inc/php/class.crud.php
-* * the Template specific CRUD-Class in template/TPLNAME/crud.php
-* * and Hooks if required
+* * the base crud-class in inc/php/class.crud.php
+* * the template-specific crud-class in template/TPLNAME/crud.php
+* * and hook-functions if required
 */
 
 require 'inc/php/header.php';

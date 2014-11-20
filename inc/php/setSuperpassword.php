@@ -22,6 +22,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 *********************************************************************************/
 require __DIR__ . '/session.php';
+
+
+
+
+
+
 // collect styles
 $styles = glob('../../../vendor/cmskit/jquery-ui/themes/*', GLOB_ONLYDIR);
 $sopt = '';
@@ -46,6 +52,19 @@ foreach($templates as $template)
 	}
 }
 
+
+// collect templates
+$extensions = glob('../../extensions/*', GLOB_ONLYDIR);
+$eopt = '';
+foreach($extensions as $extension)
+{
+    if(file_exists($extension.'/login_index.inc'))
+    {
+        $name = basename($extension);
+        $eopt .= '<option value="'.$name.'">'.$name.'</option>';
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +74,7 @@ foreach($templates as $template)
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
 	<script type="text/javascript" src="../../../vendor/cmskit/jquery-ui/jquery.min.js"></script>
 	<script type="text/javascript" src="../../../vendor/cmskit/jquery-ui/vendor/cmskit/jquery-ui/plugins/jquery.plugin_password_strength.js"></script>
-	<script type="text/javascript" src="../js/gpw.js"></script>
+
 	<style>
 		body{background:#eee; font:72.5% "Trebuchet MS", Arial, sans-serif;}
 		a{text-decoration:none;color:#333;}
@@ -80,7 +99,7 @@ foreach($templates as $template)
 <?php
 
 require 'functions.php';
-@include '../super.php';
+@include '../global_configuration.php';
 //echo $_SESSION[$_GET['project']]['root'].' / '.md5($_SERVER['REMOTE_ADDR'] . $super[1]);
 
 function L($s){
@@ -89,9 +108,9 @@ function L($s){
 
 
 if(
-	!isset($super) 
+	!isset($super) // if global_configuration does not exist
 	||
-	(	isset($_GET['project'])
+	(	isset($_GET['project']) // OR it exist BUT we detect superuser
 		&& isset($_SESSION[$_GET['project']]['root'])
 		&& $_SESSION[$_GET['project']]['root'] == md5($_SERVER['REMOTE_ADDR'] . $super[1])
 	)
@@ -108,21 +127,26 @@ if(
 			{
 				$tpl[] = basename($template);
 			}
-			$crpt = explode(':', crpt($_POST['pass'], $_POST['salt']));
+
+            $salt = substr(md5(mt_rand()),0,12);
+
+			$crpt = explode(':', crpt($_POST['pass'], $salt));
 	
-	// save the Settings to inc/super.php
-	file_put_contents('../super.php', 
+	// save the Settings to inc/global_configuration.php
+	file_put_contents('../global_configuration.php',
 	'<?php
 	// auto-generated: do not edit!
-	$super = array(\''.$_POST['salt'].'\', \''.array_pop($crpt).'\');
+	$super = array(\''.$salt.'\', \''.array_pop($crpt).'\');
 	$config = array(
-		\'theme\' => array(\''.$_POST['theme'].'\'), // default jQuery-UI-Theme
-		\'template\' => array(\''.$_POST['template'].'\'), // default Backend-Template
-		\'autolog\' => array('.(strlen($_POST['pass'])>0 ? '0' : '1').'), // automatic Login without Password (1/0)
+		\'theme\' => array(\''.$_POST['theme'].'\'), // default jQuery-UI-theme
+		\'template\' => array(\''.$_POST['template'].'\'), // default backend-template
+		\'autolog\' => '.(strlen($_POST['pass'])>0 ? 'false' : 'true').', // automatic login without password
+		\'login\' => \''.$_POST['login'].'\', // use login-extension
 	);
 	');
 			
-			chmod('../super.php', 0776);
+			chmod('../global_configuration.php', 0776);
+
 			echo '<div id="wrapper">
 			<h2>' . L('Password_saved') . '!</h2>
 			<a href="../../">' . L('Login-Page') . '</a></div>';
@@ -132,18 +156,21 @@ if(
 		{
 			echo '
 			<form id="wrapper" style="display:none" method="post" action="setSuperpassword.php'.(isset($_GET['project'])?'?project='.$_GET['project']:'').'">
-			<h4>' . L('set_Super-Password') . '</h4>
-			<input type="password" autocomplete="off" id="inputPassword" name="pass" title="' . L('leave_empty_to_enable_auto-login') . '" placeholder="' . L('leave_empty_to_enable_auto-login') . '" /> 
-			<input type="hidden" name="salt" id="salt" value="' . md5(mt_rand()) . '" />
-			<h4>' . L('default_Theme') . '</h4>
+			<h4>' . L('set_super-password') . '</h4>
+			<input type="password" autocomplete="off" id="inputPassword" name="pass" title="' . L('leave_empty_to_enable_auto-login') . '" placeholder="' . L('leave_empty_to_enable_auto-login') . '" />
+			<h4>' . L('default_theme') . '</h4>
 			<select name="theme" title="' . L('choose_the_default_UI-Stylesheet_for_Backend') . '">' .
 			$sopt .
 			'</select>
-			<h4>' . L('default_Template') . '</h4>
-			<select name="template" title="' . L('choose_the_default_Template_for_Backend') . '">' .
+			<h4>' . L('default_template') . '</h4>
+			<select name="template" title="' . L('choose_the_default_template_for_backend') . '">' .
 			$topt .
 			'</select>
-			
+			<h4>' . L('login_script') . '</h4>
+			<select name="login" title="' . L('choose_the_login_script') . '">
+			<option value="">' . L('use_no_login_extension') . '</option>' .
+                $eopt .
+                '</select>
 			<hr /><input type="submit" value="' . L('save_Settings') . '" />
 			</form>
 			';
@@ -156,7 +183,7 @@ if(
 }
 else
 {
-	echo '<h3 id="wrapper">' . L('Super-Password_already_exists') . '!</h3>';
+	echo '<h3 id="wrapper">' . L('Super-password_already_exists') . '!</h3>';
 }
 
 ?>
@@ -180,7 +207,7 @@ else
 		$('#inputPassword').password_strength(opts);
 		
 		// generate a new random Salt (hopefully better than md5)
-		$('#salt').val(GPW.complex(12));
+		//$('#salt').val(GPW.complex(12));
 	});
 </script>
 </body>

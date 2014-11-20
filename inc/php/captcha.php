@@ -1,5 +1,5 @@
 <?php
-//super-simple Captcha to protect against brute-force-Attacks
+//super-simple captcha to protect against brute-force attacks
 require __DIR__ . '/session.php';
 $ch = '23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ';// 0/1 look like O/l, so we remove both
 $s = '';
