@@ -1,25 +1,12 @@
 
-/**
- * GPW - Generate pronounceable passwords
-   This program uses statistics on the frequency of three-letter sequences
-   in English to generate passwords.  The statistics are
-   generated from your dictionary by the program load_trigram.
-
-   See www.multicians.org/thvv/gpw.html for history and info.
-   Tom Van Vleck
- * 
- * Adapted by Christoph Taubmann to hav the complex option
- * 
- * 
- */
-
-
 var GPW = {
 
 /**
-* generate a complex Password
-* var pw = GPW.complex(10);
-*/
+ * generate a complex Password
+ * var pw = GPW.complex(10);
+ * @param pwl
+ * @returns {string}
+ */
 complex : function (pwl)
 {
 	var charset = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_', retVal = '';
@@ -30,10 +17,17 @@ complex : function (pwl)
 },
 
 /**	
-* generate a pronouncable Password
-* var pw = GPW.pronounceable(10);
+ * generate a pronouncable Password
+ * var pw = GPW.pronounceable(10);
+ *
+ * This program uses statistics on the frequency of three-letter sequences
+ * in English to generate passwords.  The statistics are  generated from your dictionary by the program load_trigram.
+ * See www.multicians.org/thvv/gpw.html for history and info.
+ * Tom Van Vleck
+ *
+ * @param pwl
+ * @returns {string}
 */
-
 pronounceable : function (pwl)
 {
 	var output = '', c1, c2, c3, sum = 0, nchar, ranno, pwnum, pik, _alphabet = "abcdefghijklmnopqrstuvwxyz";

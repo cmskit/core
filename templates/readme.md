@@ -37,7 +37,7 @@ a Folder **may** contain
 		},
 		"js": {
 			"src": [
-				["TEMPLATE/js/cmskit.core.js", true, true, true],
+				["TEMPLATE/js/default.core.js", true, true, true],
 				["TEMPLATE/js/cmskit.desktop.js", true, true, false],
 				["TEMPLATE/js/jquery.autosize.min.js", true, false, false],
 				["BACKEND/../vendor/cmskit/jquery-ui/jquery.foldertree.js", true, false, true]
@@ -54,5 +54,5 @@ a Folder **may** contain
 
 #### Javascript
 
-	["TEMPLATE/js/cmskit.core.js", true, true, true]
+	["TEMPLATE/js/default.core.js", true, true, true]
 	[filepath, compress_code, translate_labels, restore_commenthead]
