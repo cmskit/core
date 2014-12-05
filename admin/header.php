@@ -40,6 +40,7 @@ $HTML = '';
 
 // Access-Control BEGIN
 require_once $backend . '/inc/global_configuration.php';
+
 // check if user is superroot
 $superroot = ($_SESSION[$projectName]['root'] == md5($_SERVER['REMOTE_ADDR'] . $super[1]));
 
