@@ -2,19 +2,11 @@
 
 See [cms-kit](//github.com/cmskit/core)
 
-Wizards extend backend-inputs or provide dialogs for easy manipulation of data
+Wizards extend backend-inputs or provide dialogs to manipulate of data easily
 
 Each Wizard is a folder containing (at least):
 
 * include.php => include as embedded Wizard
 * index.php => open Wizard as Dialog
-* doc/
-  * en/ 
-  * xy/ => Folders for language-agnostic documentation
-* composer.json => 
-
-Optional there are some additional folders
-
-* config => contains
-* tpl => 
+* composer.json => Informations about the package
 
