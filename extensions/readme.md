@@ -7,4 +7,6 @@ They are placed in
 * backend/extensions/
 * projects/YOUR_PROJECT_NAME/extensions/
 
+Each Extension is a folder containing (at least):
 
+* composer.json => Informations about the package
