@@ -12,20 +12,30 @@
     <link rel="icon" type="image/png" href="inc/img/icon.png" />
     <style>
         body {
-            margin:50px 0px;
-            padding:0px;
-            text-align:center;
+            margin: 50px 0px;
+            padding: 0px;
+            text-align: center;
             background: url('inc/img/logo.png') no-repeat;
             background-position: 5px 5px;
         }
         form {
-            max-width:500px;
-            margin:0px auto;
-            text-align:left;
-            padding:15px;
-            border:1px dashed #333;
-            background-color:#eee;
-            border-radius: 5px;
+            max-width: 500px;
+            margin: 0px auto;
+            text-align: left;
+            padding: 15px;
+            border: 1px solid #333;
+            background-color: #eee;
+            border-radius: 15px;
+        }
+        select, input {
+            border: 1px solid #ccc;
+            width: 97%;
+            margin-top: 5px;
+            padding: 5px;
+            -ms-box-sizing:content-box;
+            -moz-box-sizing:content-box;
+            box-sizing:content-box;
+            -webkit-box-sizing:content-box;
         }
     </style>
 </head>
