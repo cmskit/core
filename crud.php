@@ -71,7 +71,7 @@ $referenceName 		 =	(isset($_GET['referenceName']) && strlen(trim($_GET['referen
 $referenceId 		 =	isset($_GET['referenceId']) 
 						? $_GET['referenceId']
 						: null;
-$referenceFields 	 =	isset($_GET['referenceName']) 
+$referenceFields 	 =	$referenceName
 						? $_SESSION[$projectName]['settings']['labels'][$referenceName] 
 						: array('id'=>1);
 $objectFields 		 =	$_SESSION[$projectName]['settings']['labels'][$objectName];
