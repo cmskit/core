@@ -16,10 +16,10 @@ if (!file_exists($projectPath . '/objects/__database.php')) {
 
 // start verification
 $_SESSION[$projectName] = verifyUser(array(), $_POST, $projectPath, $projectName);
+
 //print_r($_SESSION[$projectName]);exit;
+
 // relocate this Page to kill $_POST
-
-
 if (!isset($_SESSION[$projectName]['objectOptions'])) {
     $_SESSION[$projectName] = collectObjects($_SESSION[$projectName], $lang);
 }

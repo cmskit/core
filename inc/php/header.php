@@ -34,7 +34,7 @@ if (get_magic_quotes_gpc())
 foreach ($_GET as $k=>$v){ $_GET[str_replace('amp;','',$k)] = preg_replace('/\W, /', '', $v); }
 
 // additional securing of Variables (probably via filter)??
-@$projectName = $_GET['project'];
+@$projectName = preg_replace('/\W, /', '', $_REQUEST['project']);
 @$objectName = $_GET['object'];
 
 // prevent Session-Hijacking
@@ -61,8 +61,9 @@ $objects = isset($_SESSION['TMP__'.$projectName]['objects'])
 // if we have a temporary session, destroy it immediately
 unset($_SESSION['TMP__'.$projectName]);
 
-@$db = intval($objects[$objectName]['db']);
+
 @$theme = end($_SESSION[$projectName]['settings']['interface']['theme']);
+
 
 
 /**
