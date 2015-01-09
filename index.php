@@ -64,7 +64,11 @@ foreach(glob('../projects/*', GLOB_ONLYDIR) as $p) {
 }
 // redirect to project-setup if no project exists
 if (count($projects) == 0) {
-    header('location: admin/project_setup/index.php');
+    if(file_exists('admin/project_setup/index.php')){
+        header('location: admin/project_setup/index.php');
+    } else {
+        echo 'please install cmskit/admin-project-setup';
+    }
     exit;
 }
 
