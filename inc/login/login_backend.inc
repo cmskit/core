@@ -7,8 +7,6 @@
 require_once 'inc/php/session.php';
 require_once 'inc/login/loginfunctions.php';
 
-
-
 // redirect back to login if the project is not valid
 if (!file_exists($projectPath . '/objects/__database.php')) {
     goToIndex($projectName, 'project_unknown');

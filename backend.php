@@ -49,12 +49,11 @@ if (!isset($_SESSION[$projectName])) {
     include 'inc/login/login_backend.inc';
 } else {
     //
-
     //exit($projectName);
     require_once 'inc/php/header.php';
 
 
-// STEP 3: define some variables & load template
+    // STEP 3: define some variables & load template
 
     // Objects
     $els = array();
@@ -71,11 +70,13 @@ if (!isset($_SESSION[$projectName])) {
     $objectName = (!empty($_GET['object']) ? $_GET['object'] : false);
 
     // define actual Template. Fallback-Order: 1. GET, 2. SESSION, 3. default
-    $_SESSION[$projectName]['template'][$objectName] = (!empty($_GET['template'])
+    @$_SESSION[$projectName]['template'][$objectName] = (!empty($_GET['template'])
         ? $_GET['template']
         : (isset($_SESSION[$projectName]['template'][$objectName])
             ? $_SESSION[$projectName]['template'][$objectName]
-            : end($_SESSION[$projectName]['config']['template'])));
+            : end($_SESSION[$projectName]['config']['template'])
+          )
+     );
 
     $template = (!empty($_GET['ttemplate'])) ? $_GET['ttemplate'] : $_SESSION[$projectName]['template'][$objectName];
 
@@ -95,7 +96,7 @@ if (!isset($_SESSION[$projectName])) {
     if (file_exists($templatePath . '/backend.php')) {
         include $templatePath . '/backend.php';
     } else {
-        exit('template does not exist');
+        exit('template "'.$templatePath.'" does not exist');
     }
 
 }

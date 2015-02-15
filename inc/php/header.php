@@ -42,10 +42,16 @@ if( !isset($_SESSION[$projectName]['user_fingerprint']) || $_SESSION[$projectNam
 {
     exit('Session expired or IP has changed');
 }
-
 // abort the script if the access is not allowed
-if (!isset($_SESSION[$projectName]['objects'])) exit('not active');
-if (!empty($objectName) && !isset($_SESSION[$projectName]['objects'][$objectName]) && !isset($_SESSION['TMP__'.$projectName]['objects'][$objectName])) exit('Object is not accessible!');
+if (!isset($_SESSION[$projectName]['objects'])) {
+    exit('not active');
+}
+// abort if the object is unknown
+if (!empty($objectName) && !isset($_SESSION[$projectName]['objects'][$objectName]) && !isset($_SESSION['TMP__'.$projectName]['objects'][$objectName])) {
+    exit('Object is not accessible!');
+}
+
+
 
 // absolute project-path
 $projectPath = realpath( __DIR__ . '/../../../projects/' . $projectName );
